@@ -10,6 +10,8 @@ import Likes from '../Likes/Likes'
 import WarningDelete from '../WarningDelete/WarningDelete'
 import photoServices from '../../services/photoServices'
 import { Link } from 'react-router-dom'
+import {BsEmojiSunglasses} from 'react-icons/bs'
+import emojis from '../../data/emojis'
 
 function Photo({id,image,onHandleCloseImage}) {
 
@@ -24,6 +26,8 @@ function Photo({id,image,onHandleCloseImage}) {
   const [comment,setComment]=useState('')
 
   const [showWarnig,setShowWarning]=useState(false)
+
+  const [showEmojis,setShowEmojis]=useState(false)
 
   useEffect(()=>{
     dispatch(getPhotosById(id))
@@ -41,6 +45,18 @@ function Photo({id,image,onHandleCloseImage}) {
     buttonDelete.style='display:block;'
     buttonEdit.style='display:block;'
     
+  }
+
+  function addEmoji(emoji){
+    setComment(comment + emoji)
+  }
+
+  function handleShowEmojis(){
+    setShowEmojis(true)
+  }
+
+  function handleCloseEmojis(){
+    setShowEmojis(false)
   }
 
   function handleCloseWarning(){
@@ -89,6 +105,7 @@ function Photo({id,image,onHandleCloseImage}) {
     
     dispatch(commentPhoto(userComment))
     setComment('')
+    setShowEmojis(false)
   }
 
   return (
@@ -112,10 +129,20 @@ function Photo({id,image,onHandleCloseImage}) {
             <div className="likes">
               <Likes photo={photo} handleLike={handleLike} handleRemoveLike={handleRemoveLike}/>
             </div>
-            <form className="commentForm" onSubmit={handleSubmit} >
-              <input type="text" placeholder='Adicione um comentário...' onChange={(e)=>setComment(e.target.value)} value={comment} />
-              <input type="submit" id='compartilharComment' value="Compartilhar"/>
-            </form> 
+            <div className="form">
+              <form className="commentForm" onSubmit={handleSubmit} >
+                <input type="text" placeholder='Adicione um comentário...' onChange={(e)=>setComment(e.target.value)} value={comment} />
+                <input type="submit" id='compartilharComment' value="Compartilhar"/>
+                <BsEmojiSunglasses onClick={showEmojis ? handleCloseEmojis : handleShowEmojis}/>
+              </form> 
+                { showEmojis &&
+                      <div className="emojis card">
+                          {emojis.map((emoji,index)=>(
+                              <p key={index} className="emoji" onClick={()=>addEmoji(emoji)}>{emoji}</p>
+                          ))}
+                      </div>
+                  }
+            </div>
         </div>
         <p onClick={onHandleCloseImage} className='close'>x</p>
       </div>

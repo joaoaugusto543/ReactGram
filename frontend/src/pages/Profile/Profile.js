@@ -91,7 +91,7 @@ function Profile() {
                   <button className='seguir' onClick={handleFollow}>Seguir</button>
                 )}
                 {userAuth.id && userAuth.id!==id && id && !loading && verifyFollowers() && (  
-                  <button className='seguindo' onClick={handleRemoveFollow}>Seguindo</button>
+                  <button className='seguindo' onClick={handleRemoveFollow}>Deixar de seguir</button>
                 )}
                 {userAuth.id && userAuth.id===id && id && !loading && (
                   <Link to='/public' className='publicar'>Publicar</Link>

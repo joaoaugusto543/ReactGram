@@ -7,7 +7,7 @@ import useAuth from '../../hooks/useAuth'
 import { logout, reset } from '../../slices/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetUser } from '../../slices/userSlice';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useQuery from '../../hooks/useQuery';
 import { uploads } from '../../api/api';
 

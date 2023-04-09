@@ -12,7 +12,6 @@ function Home() {
   const {photos}=useSelector(state=>state.photo)
   const {user}=useSelector(state => state.auth)
 
-
   useEffect(()=>{
     dispatch(getAllPhotos())
   },[dispatch])

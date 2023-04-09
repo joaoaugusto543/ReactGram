@@ -7,12 +7,15 @@ import {BsHeartFill} from 'react-icons/bs'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { commentPhoto } from '../../slices/photoSlice'
+import {BsEmojiSunglasses} from 'react-icons/bs'
+import emojis from '../../data/emojis'
 
 function PhotoItem({onPhoto,handleLike,handleRemoveLike,index}) {
 
     const [showComments,setShowComments]=useState(false)
     const [comment,setComment]=useState('')
     const {user}=useSelector(state => state.auth)
+    const [showEmojis,setShowEmojis]=useState(false)
 
     const dispatch=useDispatch()
 
@@ -26,6 +29,19 @@ function PhotoItem({onPhoto,handleLike,handleRemoveLike,index}) {
 
         dispatch(commentPhoto(userComment))
         setComment('')
+        setShowEmojis(false)
+    }
+
+    function addEmoji(emoji){
+        setComment(comment + emoji)
+    }
+
+    function handleShowEmojis(){
+        setShowEmojis(true)
+    }
+
+    function handleCloseEmojis(){
+        setShowEmojis(false)
     }
 
     function handleShowComments(){
@@ -49,6 +65,7 @@ function PhotoItem({onPhoto,handleLike,handleRemoveLike,index}) {
         const svg=document.querySelector(`.heart${index} > svg`)
         svg.style='animation: none;'
     }
+
 
   return (
     <div className='photoItem'>
@@ -85,7 +102,15 @@ function PhotoItem({onPhoto,handleLike,handleRemoveLike,index}) {
                 <form className='form-comments' onSubmit={handleSubmit}>
                     <input type="text" placeholder='Adicione um comentário...' onChange={(e)=>setComment(e.target.value)} value={comment}/>
                     <input type="submit"  value="Compartilhar" />
+                    <BsEmojiSunglasses onClick={showEmojis ? handleCloseEmojis : handleShowEmojis}/>
                 </form>
+                { showEmojis &&
+                    <div className="emojis">
+                        {emojis.map((emoji,index)=>(
+                            <p key={index} className="emoji" onClick={()=>addEmoji(emoji)}>{emoji}</p>
+                        ))}
+                    </div>
+                }
                 </>
             }
         </div>
