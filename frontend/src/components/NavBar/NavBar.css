@@ -1,0 +1,90 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  border-bottom: 1px solid #363636;
+  padding:1em;
+  height: 7vh;
+}
+  
+.search-form {
+  position: relative;
+  width: 100%;
+}
+  
+.search-form svg {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  height: 100%;
+  width: 40px;
+  font-size: 20px;
+  padding: 0 0.5em;
+}
+  
+.search-form input {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0;
+}
+  
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+  
+.nav-links li {
+  margin-right: 1em;
+}
+  
+.nav-links span {
+  cursor: pointer;
+}
+  
+.nav-links svg {
+  font-size: 1.5em;
+}
+
+.usersQuery{
+  position: absolute;
+  top:33px;
+  left: 0;
+  max-height: 300px;
+  background-color: #3b3b3b;
+  width: 100%;
+  overflow-y: scroll;
+  z-index: 3;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.usersQuery::-webkit-scrollbar{
+  display: none;
+}
+
+.userQuery{
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.userQuery:hover{
+  background-color: #525151;
+}
+
+.userQuery img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 0.5em;
+}
+
+.search{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 20%;
+}

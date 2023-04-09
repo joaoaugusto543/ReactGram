@@ -1,0 +1,26 @@
+.imageComment{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 1em;
+}
+
+.textComment{
+    font-size: 18px;
+    padding: 0.5em 0;
+}
+
+.textComment span{
+    font-weight: bolder;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.textComment span:hover{
+    color: #bdbdbd;
+}
+
+.comment{
+    display: flex; 
+    margin: 1em;   
+}

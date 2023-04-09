@@ -1,0 +1,16 @@
+.like{
+    display: flex;
+    align-items: center;
+    margin: 2em;
+}
+
+.pageHome{
+    width: 23%;
+    margin: 0;
+}
+
+.like svg{
+    padding-right: 0.2em;
+    font-size: 30px;
+    cursor: pointer;
+}
