@@ -22,6 +22,7 @@ function Likes({ photo, handleLike , handleRemoveLike , type}) {
       for(let i=0;i<photo.likes.length;i++){
         if(photo.likes[i].userId===user._id){
           like=true
+          break
         }
       }
       

@@ -64,6 +64,7 @@ function Profile() {
     for(let i=0;i<userPage.followers.length;i++){
       if(userPage.followers[i].userId===userAuth.id){
         follow=true
+        break
       }
     }
 
