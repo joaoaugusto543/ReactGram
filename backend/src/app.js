@@ -1,25 +1,22 @@
-import express from "express"
-import cors from 'cors'
-import routes from "./routes"
-
+require('dotenv/config')
+require('./config/db')
+const cors=require('cors')
+const express=require('express')
 const path=require('path')
 
-class App{
-    constructor(){
-        this.server=express()
-        this.middlewares()
-        this.routes()
-    }
+const app=express()
 
-    middlewares(){
-        this.server.use(express.json())
-        this.server.use(cors())
-        this.server.use('/uploads',express.static(path.join(__dirname,"/uploads")))
-    }
+app.use(cors())
 
-    routes(){
-        this.server.use(routes)
-    }
-}
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
 
-export default new App().server
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+
+app.use(require('./routes/Router'))
+
+const port=process.env.PORT
+
+app.listen(port,()=>{
+    console.log(`Está rodando na porta ${port}`)
+})
